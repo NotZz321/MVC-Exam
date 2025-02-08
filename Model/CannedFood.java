@@ -24,6 +24,16 @@ public class CannedFood extends Food{
         return this.type;
     }
 
+    public String calExpirationDate(LocalDate date){
+        // before mount 10th of next year (plus 9 mount after last day of year)
+        if(date.isBefore(LocalDate.of(date.getYear() + 1, 10, 1))){
+            return "This food did't expired";
+        // after or same mount 10th of next year    
+        } else {
+            return "This food has expired";
+        }
+    }
+
     @Override
     public String toString() {
         return super.toString() +  "type = " + type;

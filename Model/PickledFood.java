@@ -25,7 +25,7 @@ public class PickledFood extends Food{
 
     public String calExpirationDate(LocalDate date){
         // before or in same mount of expiration date
-        if(date.getMonthValue() <= super.getDate().getMonthValue()){
+        if(date.getMonthValue() <= super.getDate().getMonthValue() && date.getYear() <= super.getDate().getYear()){
             return "This food did't expired";
         // after mount of expiration date
         } else {
