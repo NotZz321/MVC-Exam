@@ -7,6 +7,7 @@ import Model.*;
 public class Controller {
     private ArrayList<Food> arrFood = new ArrayList<>();
     
+    //storage of Food
     private ArrayList<Food> freshValid = new ArrayList<>();
     private ArrayList<Food> freshExpired = new ArrayList<>();
     private ArrayList<Food> pickledValid = new ArrayList<>();
@@ -41,18 +42,43 @@ public class Controller {
         String resultVerify = verifyCode(input);
         String foodStatus;
         if(currentFood instanceof FreshFood){
-            FreshFood food = (FreshFood)currentFood;
-            foodStatus = food.calExpirationDate(LocalDate.now());
+            FreshFood food1 = (FreshFood)currentFood;
+            foodStatus = food1.calExpirationDate(LocalDate.now());
+            //collect
+            if(checkStatus(foodStatus)){
+                freshValid.add(food1);
+            } else {
+                freshExpired.add(food1);
+            }
         }
 
         if(currentFood instanceof PickledFood){
-            PickledFood food = (PickledFood)currentFood;
-            foodStatus = food.calExpirationDate(LocalDate.now());
+            PickledFood food2 = (PickledFood)currentFood;
+            foodStatus = food2.calExpirationDate(LocalDate.now());
+            if(checkStatus(foodStatus)){
+                pickledValid.add(food2);
+            } else {
+                pickledExpired.add(food2);
+            }
         }
 
         if(currentFood instanceof CannedFood){
-            CannedFood food = (CannedFood)currentFood;
-            foodStatus = food.calExpirationDate(LocalDate.now());
+            CannedFood food3 = (CannedFood)currentFood;
+            foodStatus = food3.calExpirationDate(LocalDate.now());
+            if(checkStatus(foodStatus)){
+                cannedValid.add(food3);
+            } else {
+                cannedExpired.add(food3);
+            }
+        }
+    }
+
+    private boolean checkStatus(String status){
+        //check for collect in storage
+        if(status.equals("This food did't expired")){
+            return true;
+        } else {
+            return false;
         }
     }
 
