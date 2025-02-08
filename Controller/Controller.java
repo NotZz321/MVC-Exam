@@ -3,8 +3,10 @@ package Controller;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import Model.*;
+import View.View;
 
 public class Controller {
+    View v = new View();
     private ArrayList<Food> arrFood = new ArrayList<>();
     
     //storage of Food
@@ -16,6 +18,11 @@ public class Controller {
     private ArrayList<Food> cannedExpired = new ArrayList<>();
     
     private Food currentFood;
+
+    public void readStorage(){
+        StorageFood storageFood = new StorageFood();
+        arrFood = storageFood.getList();
+    }
 
     public String verifyCode(String input){
         int intInput = Integer.parseInt(input);
