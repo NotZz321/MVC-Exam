@@ -6,12 +6,12 @@ import java.time.LocalDate;
 
 public class Food{
     private int code;
-    private Date date;
+    private Date expirationDate;
 
     public Food(int code, int d, int m, int y){
         this.code = code;
         LocalDate localDate = LocalDate.of(y, m, d);
-        this.date = Date.valueOf(localDate);
+        this.expirationDate = Date.valueOf(localDate);
     }
 
     public int getCode(){
@@ -19,11 +19,11 @@ public class Food{
     }
 
     public Date getDate(){
-        return this.date;
+        return this.expirationDate;
     }
 
     @Override
     public String toString() {
-        return "Food [code = " + code + ", date = " + date + " ]";
+        return "Food [code = " + code + ", date = " + expirationDate + " ] ";
     }
 }
