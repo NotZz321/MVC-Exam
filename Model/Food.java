@@ -1,24 +1,22 @@
 package Model;
 
-import java.sql.Date;
 import java.time.LocalDate;
 
 
 public class Food{
     private int code;
-    private Date expirationDate;
+    private LocalDate expirationDate;
 
     public Food(int code, int d, int m, int y){
         this.code = code;
-        LocalDate localDate = LocalDate.of(y, m, d);
-        this.expirationDate = Date.valueOf(localDate);
+        expirationDate = LocalDate.of(y, m, d);
     }
 
     public int getCode(){
         return this.code;
     }
 
-    public Date getDate(){
+    public LocalDate getDate(){
         return this.expirationDate;
     }
 

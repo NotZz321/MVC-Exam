@@ -1,6 +1,6 @@
 package Model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 public class FreshFood extends Food{
     private FoodType type = FoodType.Fresh;
@@ -15,12 +15,22 @@ public class FreshFood extends Food{
     }
 
     @Override
-    public Date getDate(){
+    public LocalDate getDate(){
         return super.getDate();
     }
 
     public FoodType getFoodType(){
         return this.type;
+    }
+
+    public String calExpirationDate(LocalDate date){
+        // before expiration date
+        if(date.isBefore(super.getDate())){
+            return "This food did't expired";
+        // after expiration date
+        } else {
+            return "This food has expired";
+        }
     }
 
     @Override
